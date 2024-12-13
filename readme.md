@@ -208,4 +208,43 @@ Registers an error listener to handle errors.
 eventEmitter.onError((error) => console.error('Error:', error));
 ```
 
+### Error Classes
+
+`EventEmitterError`
+
+A custom error class for handling event emitter related errors.
+
+**Example**
+```typescript
+throw new EventEmitterError('An error occurred in the event emitter.');
+```
+
+-----
+`EventListenerError`
+
+A custom error class for handling listener specific errors in the event emitter.
+
+**Parameters**
+- `message` (string): The error message.
+- `eventName` (string): The name of the event.
+- `listenerName` (string): The name of the listener.
+
+**Example**
+```typescript
+throw new EventListenerError('An error occurred in the listener.', 'click', 'onButtonClick');
+```
+
+-----
+`EventGroupError`
+
+A custom error class for handling group specific errors in the event emitter.
+
+**Parameters**
+- `message` (string): The error message.
+- `groupName` (string): The name of the group.
+
+**Example**
+```typescript
+throw new EventGroupError('An error occurred in the group.', 'exampleGroup');
+```
 
