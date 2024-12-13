@@ -6,14 +6,14 @@ The `EventEmitter` class manages event listeners and allows emitting events with
 
 ## Installation
 
-npm install selcukcukur/eventemitter
+npm install @srylius/event-emitter
 
 ## Usage
 
 First, import the `EventEmitter` class into your project :
 
 ```typescript
-import { EventEmitter, EventEmitterError, EventListener, ListenerOptions, IEventEmitter } from 'your-event-emitter-package';
+import { EventEmitter, EventEmitterError, EventListener, ListenerOptions, IEventEmitter } from '@srylius/event-emitter';
 ```
 
 ## API
