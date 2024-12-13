@@ -32,12 +32,13 @@ const eventEmitter = new EventEmitter();
 
 Adds an event listener for a specific event.
 
-#### Parameters :
+#### on 
+##### Parameters
 - `event` (string): The name of the event to listen for.
 - `listener` (EventListener): The function to be executed when the event is emitted.
 - `options` (ListenerOptions, optional): Optional settings for the listener such as priority, once, group, and condition.
 
-#### Example :
+##### Example
 
 ```typescript
 eventEmitter.on('click', (message) => console.log(message), { priority: 1, once: true, group: 'exampleGroup', condition: (msg) => msg !== '' });
