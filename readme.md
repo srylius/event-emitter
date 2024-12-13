@@ -6,7 +6,9 @@ The `EventEmitter` class manages event listeners and allows emitting events with
 
 ## Installation
 
+```
 npm install @srylius/event-emitter
+```
 
 ## Usage
 
