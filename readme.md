@@ -208,7 +208,7 @@ Registers an error listener to handle errors.
 eventEmitter.onError((error) => console.error('Error:', error));
 ```
 
-### Error Classes
+### Errors
 
 `EventEmitterError`
 
@@ -247,4 +247,7 @@ A custom error class for handling group specific errors in the event emitter.
 ```typescript
 throw new EventGroupError('An error occurred in the group.', 'exampleGroup');
 ```
+
+### Example Usage
+
 
