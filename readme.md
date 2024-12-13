@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `EventEmitter` class manages event listeners and allows emitting events with improved error handling and additional listener options. It provides methods to add, remove, and emit events while supporting features like priority, groups, conditions, and logging.
+The `EventEmitter` class manages event listeners and allows emitting events with improved error handling and additional listener options. It provides methods to add, remove, and emit events while supporting features like priority, groups, conditions, and logging. This documentation provides a comprehensive overview of the EventEmitter class, including its methods, usage examples, and error handling capabilities. If you have any further questions or need additional information, feel free to ask!
 
 ## Installation
 
@@ -248,6 +248,63 @@ A custom error class for handling group specific errors in the event emitter.
 throw new EventGroupError('An error occurred in the group.', 'exampleGroup');
 ```
 
-### Example Usage
+### Advanced
+
+```typescript
+const eventEmitter = new EventEmitter();
+
+/**
+ * Listener function to handle button click events.
+ * 
+ * @param {string} message - Message to be logged.
+ */
+const onButtonClick = async (message: string): Promise<void> => {
+    console.log(message);
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Async operation completed');
+};
+
+/**
+ * Another listener function to handle button click events.
+ * 
+ * @param {string} message - Message to be logged.
+ */
+const onAnotherButtonClick = async (message: string): Promise<void> => {
+    console.log('Another listener:', message);
+};
+
+// Add a high priority listener for the 'click' event
+eventEmitter.on('click', onButtonClick, { priority: 2, group: 'interaction', condition: (msg) => msg !== '' });
+// Add another listener for the 'click' event that will be removed after the first call
+eventEmitter.on('click', onAnotherButtonClick, { priority: 1, once: true, group: 'exampleGroup' });
+
+// Emit the 'click' event
+await eventEmitter.emit('click', 'Button clicked!');
+
+// Remove all listeners in the 'exampleGroup' group for the 'click' event
+eventEmitter.offGroup('click', 'exampleGroup');
+
+// List all events and their listeners
+console.log(eventEmitter.listEvents());
+
+// List all groups and their events
+console.log(eventEmitter.listGroups());
+
+// Count listeners for 'click' event
+console.log(`Number of listeners for 'click' event: ${eventEmitter.countListeners('click')}`);
+
+// Get details of a specific listener
+console.log(eventEmitter.getListenerDetails('click', onButtonClick));
+
+// Retrieve the event log for 'click' event
+console.log(eventEmitter.getEventLog('click'));
+
+// Clear the event log for 'click' event
+eventEmitter.clearEventLog('click');
+
+// Handle errors
+eventEmitter.onError((error) => console.error('Error:', error));
+```
 
 
